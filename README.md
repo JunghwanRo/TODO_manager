@@ -1,4 +1,4 @@
-# Simple Task Management Program
+# TODO Management Program
 
 This is a lightweight task management application built with PyQt. The application lets you add tasks, drag and drop them between four sections, and delete them via the Delete key. All tasks are saved in a JSON file (`tasks.json`) so that your tasks persist between sessions.
 
@@ -43,14 +43,14 @@ sudo apt install python3-pyqt5
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/yourusername/simple-task-manager.git
-   cd simple-task-manager
+   git clone https://github.com/yourusername/TODO_manager.git
+   cd TODO_manager
    ```
 
 2. **Run the Application:**
 
    ```bash
-   python3 task_manager.py
+   python3 TODO_manager.py
    ```
 
 3. **Using the Application:**
@@ -77,6 +77,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ---
 
-Thank you for using the Simple Task Management Program. If you have any questions, suggestions, or issues, please open an issue in the repository.
+Thank you for using the TODO Management Program. If you have any questions, suggestions, or issues, please open an issue in the repository.
 ```
 ```
