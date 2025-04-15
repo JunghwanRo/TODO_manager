@@ -1,13 +1,3 @@
-# GitHub Repository Short Description
-
-**Simple Task Management Program:**  
-A lightweight, PyQt-based task management tool for Ubuntu. Easily add, drag-and-drop, and delete tasks across multiple sections with persistent storage using JSON.
-
----
-
-# README.md
-
-
 # Simple Task Management Program
 
 This is a lightweight task management application built with PyQt. The application lets you add tasks, drag and drop them between four sections, and delete them via the Delete key. All tasks are saved in a JSON file (`tasks.json`) so that your tasks persist between sessions.
