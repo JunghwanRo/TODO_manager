@@ -3,6 +3,21 @@ import json
 import os
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QLineEdit, QPushButton, QListWidget, QListWidgetItem, QLabel, QFrame
 from PyQt5.QtCore import Qt
+import subprocess
+
+
+def auto_commit_and_push():
+    try:
+        # Stage all changes. Adjust the path if needed.
+        subprocess.run(["git", "add", "."], check=True)
+        # Commit with a message containing the launch date/time
+        commit_message = "TODO task updated on " + subprocess.check_output(["date"]).decode().strip()
+        subprocess.run(["git", "commit", "-m", commit_message], check=True)
+        # Push changes to the remote repository
+        subprocess.run(["git", "push"], check=True)
+    except subprocess.CalledProcessError as e:
+        # Optionally, print the error or handle it as needed.
+        print("Auto commit failed:", e)
 
 
 class DraggableListWidget(QListWidget):
@@ -160,6 +175,9 @@ class TaskManager(QWidget):
 
 
 if __name__ == "__main__":
+    # Optionally, run the auto commit before launching the app.
+    auto_commit_and_push()
+
     app = QApplication(sys.argv)
     window = TaskManager()
     window.show()
