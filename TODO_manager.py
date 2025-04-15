@@ -8,12 +8,16 @@ import subprocess
 
 def auto_commit_and_push():
     try:
-        # Stage all changes. Adjust the path if needed.
+        # Change the working directory to where this script is located.
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        os.chdir(script_dir)
+
+        # Stage all changes.
         subprocess.run(["git", "add", "."], check=True)
-        # Commit with a message containing the launch date/time
+        # Commit with a message containing the launch date/time.
         commit_message = "TODO task updated on " + subprocess.check_output(["date"]).decode().strip()
         subprocess.run(["git", "commit", "-m", commit_message], check=True)
-        # Push changes to the remote repository
+        # Push changes to the remote repository.
         subprocess.run(["git", "push"], check=True)
     except subprocess.CalledProcessError as e:
         # Optionally, print the error or handle it as needed.
@@ -65,7 +69,7 @@ class DraggableListWidget(QListWidget):
 class TaskManager(QWidget):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Simple Task Management Program")
+        self.setWindowTitle("TODO Management Program")
         self.setupUI()
         self.load_tasks()  # Load saved tasks on startup
 
