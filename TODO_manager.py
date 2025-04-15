@@ -6,17 +6,29 @@ from PyQt5.QtCore import Qt
 import subprocess
 
 
+def update_timestamp_file():
+    # Create/update a file with the current timestamp
+    timestamp = subprocess.check_output(["date"]).decode().strip()
+    with open("last_update.txt", "w") as f:
+        f.write("Last update: " + timestamp)
+
+
 def auto_commit_and_push():
     try:
         # Change the working directory to where this script is located.
         script_dir = os.path.dirname(os.path.abspath(__file__))
         os.chdir(script_dir)
 
+        # Update the timestamp file so that there's always something to commit.
+        update_timestamp_file()
+
         # Stage all changes.
         subprocess.run(["git", "add", "."], check=True)
+
         # Commit with a message containing the launch date/time.
         commit_message = "TODO task updated on " + subprocess.check_output(["date"]).decode().strip()
         subprocess.run(["git", "commit", "-m", commit_message], check=True)
+
         # Push changes to the remote repository.
         subprocess.run(["git", "push"], check=True)
     except subprocess.CalledProcessError as e:
